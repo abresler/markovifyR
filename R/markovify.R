@@ -232,18 +232,6 @@ generate_parsed_sentences <-
     markov_model$parsed_sentences
   }
 
-#' Generate sentence starting with
-#'
-#' This function generates a sentence
-#' starting with the word you specify
-#' if it is possible
-#'
-#' @param markov_model markov model object
-#' @param start_word character of the word
-#'
-#' @return a character vector
-#' @export
-#' @examples
 generate_sentence_starting_with <-
   function(markov_model, start_word) {
    sentence <- markov_model$make_sentence_with_start(beginning = start_word)
@@ -254,11 +242,84 @@ generate_sentence_starting_with <-
    sentence
   }
 
+generate_sentences_starting_with <-
+  function(markov_model,
+           start_word,
+           output_column_name = "textLinnemanBot",
+           count = 50,
+           tries = 100,
+           only_distinct = TRUE,
+           return_message = TRUE) {
+    generate_sentence_starting_with_safe <-
+      purrr::possibly(generate_sentence_starting_with, data_frame)
+
+    df_text <-
+      1:count %>%
+      map_df(function(x){
+        text_output <-
+          generate_sentence_starting_with_safe(markov_model = markov_model, start_word = start_word)
+        if (text_output %>% purrr::is_null()) {
+          return(invisible())
+        }
+        data_frame(idRow = x, wordStart = start_word ,UQ(output_column_name) := text_output)
+      })
+
+    if (only_distinct) {
+      df_text <-
+        df_text %>%
+        select(-idRow) %>%
+        distinct() %>%
+        mutate(idRow = 1:n()) %>%
+        select(idRow, everything())
+    }
+
+    if (return_message) {
+      1:nrow(df_text) %>%
+        walk(function(x) {
+          text_output <-
+            df_text %>% slice(x) %>% select(3) %>% pull(UQ(output_column_name))
+          glue::glue("{output_column_name}: {text_output}") %>% message()
+        })
+
+    }
+
+    df_text
+  }
+
+generate_sentences_starting_with_words <-
+  function(markov_model,
+           start_words = c("If", "You"),
+           output_column_name = "textLinnemanBot",
+           count = 50,
+           tries = 100,
+           only_distinct = TRUE,
+           return_message = TRUE) {
+
+      generate_sentences_starting_with_safe <-
+      purrr::possibly(generate_sentences_starting_with, data_frame())
+
+    all_data <-
+      start_words %>%
+      map_df(function(x) {
+        generate_sentences_starting_with_safe(
+          markov_model = markov_model,
+          start_word = x,
+          output_column_name = output_column_name,
+          count = count,
+          tries = tries,
+          only_distinct = only_distinct,
+          return_message = return_message
+        )
+      })
+
+    all_data
+  }
+
 #' Generate start words
 #'
 #' @param markov_model markov model mobject
 #' @param include_cumulative_distance if \code{TRUE} returns
-#' cumulativ distance of the words
+#' cumulative distance of the words
 #'
 #' @return a \code{data_frame} objects
 #' @export
@@ -289,6 +350,7 @@ generate_start_words <-
 #' parameters
 #'
 #' @param markov_model a markov model produced from \code{generate_markovify_model}
+#' @param start_words a markov model produced with a list of start word terms
 #' @param maximum_sentence_length the maximum length of the sentence
 #' if \code{NULL} model will produce a random sentence of any length.
 #' @param output_column_name name of the
@@ -326,11 +388,26 @@ generate_start_words <-
 markovify_text <-
   function(markov_model,
            maximum_sentence_length = NULL,
+           start_words = NULL,
            output_column_name = "columnName",
            count = 50,
            tries = 100,
            only_distinct = TRUE,
            return_message = TRUE) {
+
+    if (!start_words %>% purrr::is_null()) {
+      data <-
+        generate_sentences_starting_with_words(markov_model = markov_model,
+                                             start_words = start_words,
+                                             output_column_name = output_column_name,
+                                             count = count,
+                                             tries = tries,
+                                             only_distinct = only_distinct,
+                                             return_message = return_message)
+
+      return(data)
+    }
+
     if (maximum_sentence_length %>% purrr::is_null()) {
      data <-
        generate_sentence(markov_model = markov_model,

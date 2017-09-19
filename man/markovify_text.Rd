@@ -5,14 +5,16 @@
 \title{Markovify text}
 \usage{
 markovify_text(markov_model, maximum_sentence_length = NULL,
-  output_column_name = "columnName", count = 50, tries = 100,
-  only_distinct = TRUE, return_message = TRUE)
+  start_words = NULL, output_column_name = "columnName", count = 50,
+  tries = 100, only_distinct = TRUE, return_message = TRUE)
 }
 \arguments{
 \item{markov_model}{a markov model produced from \code{generate_markovify_model}}
 
 \item{maximum_sentence_length}{the maximum length of the sentence
 if \code{NULL} model will produce a random sentence of any length.}
+
+\item{start_words}{a markov model produced with a list of start word terms}
 
 \item{output_column_name}{name of the}
 

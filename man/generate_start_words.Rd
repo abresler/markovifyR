@@ -10,7 +10,7 @@ generate_start_words(markov_model, include_cumulative_distance = TRUE)
 \item{markov_model}{markov model mobject}
 
 \item{include_cumulative_distance}{if \code{TRUE} returns
-cumulativ distance of the words}
+cumulative distance of the words}
 }
 \value{
 a \code{data_frame} objects

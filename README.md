@@ -84,78 +84,136 @@ markovify_text(
 )
 ```
 
-    ## textLinnemanBot: Issues are much easier to see reality
+    ## textLinnemanBot: “What is the bet?” is the bet?” is the outcome of hard work every day; not a eureka experience
 
-    ## textLinnemanBot: Your job in life is to convey who you are and stay true to your core; be patient as shortly thereafter something wonderful and amazing will happen
+    ## textLinnemanBot: Your job in life that can’t be fixed, so don’t go crazy when things break
 
-    ## textLinnemanBot: It is meant to be me and us
+    ## textLinnemanBot: Putting profits before power will generally result in a life of power
 
-    ## textLinnemanBot: And not more than about a dozen people will truly cry when they hear of your mistakes but also forgive yourself for making mistakes
+    ## textLinnemanBot: Members of the people you love
 
-    ## textLinnemanBot: Pick your conflicts; most disputes are not linear, so be open to unexpected changes
+    ## textLinnemanBot: Generosity is cheap over the long term, as you will never realize it was your fault; then ask how you feel about them
+
+    ## textLinnemanBot: Life isn’t fair, so don’t go crazy when things are unfair
+
+    ## textLinnemanBot: “What is the right thing simply because it is what it is what it is the right thing simply because it is the bet?” is the outcome of hard work every day; not a eureka experience
+
+    ## textLinnemanBot: Just when you are doing something, and do it Then it is learned as you wrinkle
+
+    ## textLinnemanBot: Let the people you love
+
+    ## textLinnemanBot: Genius is the critical question
+
+    ## textLinnemanBot: Genius is the bet?” is the bet?” is the critical question
+
+    ## textLinnemanBot: Enjoy what you do not respect yourself, why should anyone else respect you
+
+    ## textLinnemanBot: In the battle between fear and greed, greed wins about 80% of the people you love
 
     ## textLinnemanBot: Assume it was your fault; then ask how you feel about them
 
-    ## textLinnemanBot: Just when you are If people don’t like it, that’s their problem
+    ## textLinnemanBot: Stick to what you do not feel so special
 
-    ## textLinnemanBot: And not more than about a dozen people will truly cry when they hear of your death, so do not open the door when opportunity knocks, you will receive benefits many times over during your life
+    ## textLinnemanBot: People are the problem
 
-    ## textLinnemanBot: Just be the best you can?
+    ## textLinnemanBot: To interview well, think of yourself like a stripper; you need to be me and us; most people want it to be mean and they will view it as a very nasty statement
 
-    ## textLinnemanBot: “What is the bet?” is the bet?” is the outcome of hard work every day; not a eureka experience
+    ## textLinnemanBot: Why ever do less than the sadness of their life rather than the sadness of their life rather than the best you that you can be
 
-    ## textLinnemanBot: Generosity is cheap over the long term, as you wrinkle
+    ## textLinnemanBot: Take ownership of your death, so do not love yourself, there is no reason others should love you
 
-    ## textLinnemanBot: Don’t engage in mental masturbation; focus on decisions that matter in life is to convey who you are and show them your assets
+    ## textLinnemanBot: Stick to what you do not love yourself, there is no reason others should love you
 
-    ## textLinnemanBot: Assess your audience before you got here, and will get along fine when you think you have is your reputation
+    ## textLinnemanBot: There are very few things in life that can’t be fixed, so don’t take it personally if yours are strange and difficult; so don’t take it personally if yours are strange and difficult
 
-    ## textLinnemanBot: Just when you think you have is your reputation
+    ## textLinnemanBot: Find out who you are If people don’t like it, that’s their problem
 
-    ## textLinnemanBot: Genius is the right thing simply because it is what it is the critical question
-
-    ## textLinnemanBot: It’s the journey – not the things – that matter in life and good things can happen
-
-    ## textLinnemanBot: Being subtle is not a eureka experience
+    ## textLinnemanBot: There are just a humble school teacher”
 
     ## textLinnemanBot: Life isn’t fair, so don’t take it personally if yours are strange and difficult
 
-    ## textLinnemanBot: Remember that the world did just fine before you start to speak
+    ## textLinnemanBot: The machine is rarely the problem; the people you love
 
-    ## textLinnemanBot: Decide what you know, but keep learning
-
-    ## textLinnemanBot: You may never get a second chance to tell people how you could have made it better
-
-    ## textLinnemanBot: All you have figured out life, along comes something horrible that shakes you to your values
-
-    ## textLinnemanBot: Open doors in life is to convey who you are gone.
-
-    ## textLinnemanBot: Enjoy what you know, but keep learning
-
-    ## # A tibble: 24 x 2
+    ## # A tibble: 25 x 2
     ##    idRow textLinnemanBot                                                                                               
     ##    <int> <chr>                                                                                                         
-    ##  1     1 "Issues are much easier to see reality"                                                                       
-    ##  2     2 "Your job in life is to convey who you are and stay true to your core; be patient as shortly thereafter somet…
-    ##  3     3 "It is meant to be me and us"                                                                                 
-    ##  4     4 "And not more than about a dozen people will truly cry when they hear of your mistakes but also forgive yours…
-    ##  5     5 "Pick your conflicts; most disputes are not linear, so be open to unexpected changes"                         
-    ##  6     6 "Assume it was your fault; then ask how you feel about them"                                                  
-    ##  7     7 "Just when you are If people don’t like it, that’s their problem"                                             
-    ##  8     8 "And not more than about a dozen people will truly cry when they hear of your death, so do not open the door …
-    ##  9     9 "Just be the best you can?"                                                                                   
-    ## 10    10 "“What is the bet?” is the bet?” is the outcome of hard work every day; not a eureka experience"              
-    ## # ... with 14 more rows
+    ##  1     1 "“What is the bet?” is the bet?” is the outcome of hard work every day; not a eureka experience"              
+    ##  2     2 "Your job in life that can’t be fixed, so don’t go crazy when things break"                                   
+    ##  3     3 "Putting profits before power will generally result in a life of power"                                       
+    ##  4     4 "Members of the people you love"                                                                              
+    ##  5     5 "Generosity is cheap over the long term, as you will never realize it was your fault; then ask how you feel a…
+    ##  6     6 "Life isn’t fair, so don’t go crazy when things are unfair"                                                   
+    ##  7     7 "“What is the right thing simply because it is what it is what it is the right thing simply because it is the…
+    ##  8     8 "Just when you are doing something, and do it Then it is learned as you wrinkle"                              
+    ##  9     9 "Let the people you love"                                                                                     
+    ## 10    10 "Genius is the critical question"                                                                             
+    ## # ... with 15 more rows
 
 #### Step 4 -- Other Features
 
 Generate random sentence starting with.
 
 ``` r
-generate_sentence_starting_with(markov_model = markov_model, start_word = "If")
+markovify_text(
+  markov_model = markov_model,
+  maximum_sentence_length = NULL,
+  start_words = c("The", "You", "Life"),
+  output_column_name = 'textLinnemanBot',
+  count = 25,
+  tries = 100,
+  only_distinct = TRUE,
+  return_message = TRUE
+)
 ```
 
-    ## [1] "If you do and success will follow"
+    ## textLinnemanBot: The machine is rarely the problem; the people you love
+
+    ## textLinnemanBot: The machine is rarely the problem; the people who matter know how you feel about them
+
+    ## textLinnemanBot: The machine is rarely the problem; the people operating the machine are the ultimate assets
+
+    ## textLinnemanBot: The machine is rarely the problem; the people who matter know how you could have made it better
+
+    ## textLinnemanBot: You may never get a second chance to tell people how you could have made it better
+
+    ## textLinnemanBot: Life isn’t fair, so don’t be upset when things break
+
+    ## textLinnemanBot: Life isn’t fair, so don’t take it personally if yours are strange and difficult
+
+    ## textLinnemanBot: Life will end; face it and embrace the joy of their life rather than the best you can?
+
+    ## textLinnemanBot: Life isn’t fair, so don’t go crazy when things are unfair
+
+    ## textLinnemanBot: Life isn’t fair, so don’t go crazy when things break
+
+    ## textLinnemanBot: Life will end; face it and embrace the joy of their life rather than the sadness of their life rather than the best you can?
+
+    ## textLinnemanBot: Life will end; face it and embrace the joy of their life rather than the sadness of their life rather than the sadness of their life rather than the sadness of their death
+
+    ## textLinnemanBot: Life isn’t fair, so don’t take it personally if yours are strange and difficult; so don’t go crazy when things break
+
+    ## textLinnemanBot: Life will end; face it and embrace the joy of their life rather than the best you that you can be
+
+    ## textLinnemanBot: Life will end; face it and embrace the joy of their life rather than the sadness of their life rather than the sadness of their life rather than the best you that you can be
+
+    ## # A tibble: 15 x 3
+    ##    idRow wordStart textLinnemanBot                                                                                     
+    ##    <int> <chr>     <chr>                                                                                               
+    ##  1     1 The       "The machine is rarely the problem; the people you love"                                            
+    ##  2     2 The       "The machine is rarely the problem; the people who matter know how you feel about them"             
+    ##  3     3 The       "The machine is rarely the problem; the people operating the machine are the ultimate assets"       
+    ##  4     4 The       "The machine is rarely the problem; the people who matter know how you could have made it better"   
+    ##  5     1 You       "You may never get a second chance to tell people how you could have made it better"                
+    ##  6     1 Life      "Life isn’t fair, so don’t be upset when things break"                                              
+    ##  7     2 Life      "Life isn’t fair, so don’t take it personally if yours are strange and difficult"                   
+    ##  8     3 Life      "Life will end; face it and embrace the joy of their life rather than the best you can?"            
+    ##  9     4 Life      "Life isn’t fair, so don’t go crazy when things are unfair"                                         
+    ## 10     5 Life      "Life isn’t fair, so don’t go crazy when things break"                                              
+    ## 11     6 Life      "Life will end; face it and embrace the joy of their life rather than the sadness of their life rat…
+    ## 12     7 Life      "Life will end; face it and embrace the joy of their life rather than the sadness of their life rat…
+    ## 13     8 Life      "Life isn’t fair, so don’t take it personally if yours are strange and difficult; so don’t go crazy…
+    ## 14     9 Life      "Life will end; face it and embrace the joy of their life rather than the best you that you can be" 
+    ## 15    10 Life      "Life will end; face it and embrace the joy of their life rather than the sadness of their life rat…
 
 Look at corpus start-words
 

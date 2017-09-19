@@ -92,7 +92,16 @@ markovify_text(
 Generate random sentence starting with.
 
 ```{r}
-generate_sentence_starting_with(markov_model = markov_model, start_word = "If")
+markovify_text(
+  markov_model = markov_model,
+  maximum_sentence_length = NULL,
+  start_words = c("The", "You", "Life"),
+  output_column_name = 'textLinnemanBot',
+  count = 25,
+  tries = 100,
+  only_distinct = TRUE,
+  return_message = TRUE
+)
 ```
 
 Look at corpus start-words
