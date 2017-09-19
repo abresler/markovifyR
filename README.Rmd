@@ -1,0 +1,103 @@
+---
+title: "MarkovifyR"
+output: github_document
+---
+
+
+`markovifyR` : R wrapper for Markovify
+
+Ref: <https://github.com/jsvine/markovify>
+
+>_"Markovify is a simple, extensible Markov chain generator. Right now, its main use is for building Markov models of large corpora of text, and generating random sentences from that."_
+
+This package requires Python and markovify to be installed.
+
+To install markovify in R you can run:
+
+```{r eval = F}
+system("pip install markovify")
+```
+
+The following functions are implemented:
+
+- `generate_markovify_model:` Generates a markov model
+- `markovify_text`: Generates text from a markov model
+- `generate_sentence_starting_with`: Generates text, if possible, with your specified start word
+- `generate_start_words`: Produces a data frame with the starting words for each input sentence
+-
+
+### Installation
+
+```{r eval=FALSE}
+devtools::install_github("abresler/markovifyR")
+```
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+options(width=120)
+```
+
+### Usage
+
+```{r message=FALSE, warning=FALSE, error=FALSE}
+library(markovifyR)
+library(dplyr)
+```
+
+### Generate New Peter Linneman "Life Lessons""
+
+Here we are going to showcase how to use the package to create new [Life Lessons](asbcllc.com/reflections/peter_linneman/) from my favorite professor from college Peter Linneman.
+
+#### Step 1 -- Build the Corpus
+
+```{r}
+data("linneman_lessons")
+
+lessons <-
+  linneman_lessons %>% 
+  pull(textLesson)
+
+lessons %>% str()
+```
+
+#### Step 2 -- Build the Model
+
+```{r}
+markov_model <-
+  generate_markovify_model(
+    input_text = lessons,
+    markov_state_size = 2L,
+    max_overlap_total = 25,
+    max_overlap_ratio = .85
+  )
+
+```
+
+
+### Step 3 -- Generate the Text
+```{r}
+markovify_text(
+  markov_model = markov_model,
+  maximum_sentence_length = NULL,
+  output_column_name = 'textLinnemanBot',
+  count = 25,
+  tries = 100,
+  only_distinct = TRUE,
+  return_message = TRUE
+)
+
+```
+
+#### Step 4 -- Other Features
+
+Generate random sentence starting with.
+
+```{r}
+generate_sentence_starting_with(markov_model = markov_model, start_word = "If")
+```
+
+Look at corpus start-words
+
+
+```{r}
+generate_start_words(markov_model = markov_model)
+```
