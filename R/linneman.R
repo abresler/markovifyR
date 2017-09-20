@@ -9,7 +9,7 @@ get_data_linneman_lessons <-
   function() {
     lessons <-
       "http://asbcllc.com/reflections/peter_linneman/linnemen_lessons.txt" %>%
-      readr::read_lines()
+      readLines()
 
     tibble(textLesson = lessons) %>%
       mutate(idLesson = 1:n()) %>%
