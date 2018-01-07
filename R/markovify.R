@@ -197,7 +197,7 @@ combine_markov_models <-
     mk <- reticulate::import("markovify")
 
     model <-
-      mk$combine(models = c(model_a, model_a), weights = weights)
+      mk$combine(models = c(model_a, model_b), weights = weights)
     model
   }
 
