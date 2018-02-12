@@ -353,7 +353,7 @@ generate_start_words <-
 #' @param start_words a markov model produced with a list of start word terms
 #' @param maximum_sentence_length the maximum length of the sentence
 #' if \code{NULL} model will produce a random sentence of any length.
-#' @param output_column_name name of the
+#' @param output_column_name name of the output column in dataframe
 #' @param count count of the number of sentences, default \code{50}
 #' @param tries count of the number of tries to produce a coherent sentence
 #' @param only_distinct if \code{TRUE} returns only distinct text
