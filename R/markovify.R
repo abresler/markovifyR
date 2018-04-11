@@ -123,7 +123,7 @@ generate_short_sentence <-
         walk(function(x) {
           text_output <-
             df_text %>% slice(x) %>% select(2) %>% pull(UQ(output_column_name))
-          glue::glue("{output_column_name}: {text_output}") %>% message()
+          glue::glue("\n\n{output_column_name}: {text_output}\n\n") %>% message()
         })
 
     }
