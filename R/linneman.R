@@ -1,6 +1,6 @@
 #' Newest Linneman lessons
 #'
-#' @return a \code{data_frame}
+#' @return a \code{tibble}
 #' @export
 #' @references \url{asbcllc.com/reflections/peter_linneman/}
 #' @examples
@@ -8,7 +8,7 @@
 get_data_linneman_lessons <-
   function() {
     lessons <-
-      "http://asbcllc.com/reflections/peter_linneman/linnemen_lessons.txt" %>%
+      "https://asbcllc.com/reflections/peter_linneman/linnemen_lessons.txt" %>%
       readLines()
 
     tibble(textLesson = lessons) %>%

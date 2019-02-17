@@ -8,5 +8,5 @@
 #' \item{textLesson}{Lesson Text}
 #'   ...
 #' }
-#' @source \url{http://asbcllc.com/reflections/peter_linneman/}
+#' @source \url{https://asbcllc.com/reflections/peter_linneman/}
 "linneman_lessons"

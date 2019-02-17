@@ -11,7 +11,7 @@
   ...
 }}
 \source{
-\url{http://asbcllc.com/reflections/peter_linneman/}
+\url{https://asbcllc.com/reflections/peter_linneman/}
 }
 \usage{
 linneman_lessons

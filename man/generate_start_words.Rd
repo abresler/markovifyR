@@ -13,7 +13,7 @@ generate_start_words(markov_model, include_cumulative_distance = TRUE)
 cumulative distance of the words}
 }
 \value{
-a \code{data_frame} objects
+a \code{tibble} objects
 }
 \description{
 Generate start words

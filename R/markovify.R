@@ -92,7 +92,7 @@ generate_short_sentence <-
 
     df_text <-
       1:count %>%
-      map_df(function(x) {
+      future_map_dfr(function(x) {
         text_output <-
           markov_model$make_short_sentence(max_chars = maximum_sentence_length, tries = as.integer(tries))
         ## if no result try again
@@ -105,7 +105,7 @@ generate_short_sentence <-
           text_output <- NA
         }
         ## return data frame
-        data_frame(idRow = x, UQ(output_column_name) := text_output)
+        tibble(idRow = x, UQ(output_column_name) := text_output)
       })
 
     if (only_distinct) {
@@ -123,7 +123,7 @@ generate_short_sentence <-
         walk(function(x) {
           text_output <-
             df_text %>% slice(x) %>% select(2) %>% pull(UQ(output_column_name))
-          glue::glue("\n\n{output_column_name}: {text_output}\n\n") %>% message()
+          glue::glue("\n\n{output_column_name}: {text_output}\n\n") %>% cat(fill = T)
         })
 
     }
@@ -139,7 +139,7 @@ generate_sentence <-
            return_message = TRUE) {
     df_text <-
       1:count %>%
-      map_df(function(x) {
+      future_map_dfr(function(x) {
         text_output <-
           markov_model$make_sentence()
         ## if no result try again
@@ -152,7 +152,7 @@ generate_sentence <-
           text_output <- NA
         }
         ## return data frame
-        data_frame(idRow = x, UQ(output_column_name) := text_output)
+        tibble(idRow = x, UQ(output_column_name) := text_output)
       })
 
     if (only_distinct) {
@@ -169,7 +169,7 @@ generate_sentence <-
         walk(function(x) {
           text_output <-
             df_text %>% slice(x) %>% select(2) %>% pull(UQ(output_column_name))
-          glue::glue("{output_column_name}: {text_output}") %>% message()
+          glue::glue("{output_column_name}: {text_output}") %>% cat(fill = T)
         })
 
     }
@@ -251,17 +251,17 @@ generate_sentences_starting_with <-
            only_distinct = TRUE,
            return_message = TRUE) {
     generate_sentence_starting_with_safe <-
-      purrr::possibly(generate_sentence_starting_with, data_frame)
+      purrr::possibly(generate_sentence_starting_with, tibble)
 
     df_text <-
       1:count %>%
-      map_df(function(x){
+      future_map_dfr(function(x){
         text_output <-
           generate_sentence_starting_with_safe(markov_model = markov_model, start_word = start_word)
         if (text_output %>% purrr::is_null()) {
           return(invisible())
         }
-        data_frame(idRow = x, wordStart = start_word ,UQ(output_column_name) := text_output)
+        tibble(idRow = x, wordStart = start_word ,UQ(output_column_name) := text_output)
       })
 
     if (only_distinct) {
@@ -278,7 +278,7 @@ generate_sentences_starting_with <-
         walk(function(x) {
           text_output <-
             df_text %>% slice(x) %>% select(3) %>% pull(UQ(output_column_name))
-          glue::glue("{output_column_name}: {text_output}") %>% message()
+          glue::glue("{output_column_name}: {text_output}") %>% cat(fill = T)
         })
 
     }
@@ -296,11 +296,11 @@ generate_sentences_starting_with_words <-
            return_message = TRUE) {
 
       generate_sentences_starting_with_safe <-
-      purrr::possibly(generate_sentences_starting_with, data_frame())
+      purrr::possibly(generate_sentences_starting_with, tibble())
 
     all_data <-
       start_words %>%
-      map_df(function(x) {
+      future_map_dfr(function(x) {
         generate_sentences_starting_with_safe(
           markov_model = markov_model,
           start_word = x,
@@ -321,7 +321,7 @@ generate_sentences_starting_with_words <-
 #' @param include_cumulative_distance if \code{TRUE} returns
 #' cumulative distance of the words
 #'
-#' @return a \code{data_frame} objects
+#' @return a \code{tibble} objects
 #' @export
 #' @examples
 generate_start_words <-
@@ -329,10 +329,10 @@ generate_start_words <-
     start <- markov_model$chain$begin_choices
 
     df <-
-      1:length(start) %>%
-      purrr::map_df(function(x){
+      seq_along(start) %>%
+      future_map_dfr(function(x){
         word <- start[[x]]
-        data_frame(idSentence = x, wordStart = word)
+        tibble(idSentence = x, wordStart = word)
       })
 
     if (include_cumulative_distance) {
@@ -359,7 +359,7 @@ generate_start_words <-
 #' @param only_distinct if \code{TRUE} returns only distinct text
 #' @param return_message if \code{TRUE} returns a message
 #'
-#' @return a \code{data_frame}
+#' @return a \code{tibble}
 #' @export
 #' @examples
 #' \dontrun{

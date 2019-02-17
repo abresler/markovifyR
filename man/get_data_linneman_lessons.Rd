@@ -7,7 +7,7 @@
 get_data_linneman_lessons()
 }
 \value{
-a \code{data_frame}
+a \code{tibble}
 }
 \description{
 Newest Linneman lessons
