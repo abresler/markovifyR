@@ -1,7 +1,7 @@
 Package: markovifyR
 Type: Package
 Title: R wrapper for the Markovify Python module
-Version: 0.101
+Version: 0.102
 Date: 2017-09-18
 Author: Alex Bresler (abresler@@asbcllc.com)
 Maintainer: Alex Bresler <abresler@asbcllc.com>
@@ -19,6 +19,8 @@ Imports:
    dplyr,
    purrr,
    stringr,
-   tibble
+   tibble,
+   furrr,
+   future
 LazyData: true
 RoxygenNote: 6.1.1
