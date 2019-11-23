@@ -3,7 +3,6 @@
 \docType{package}
 \name{markovifyR}
 \alias{markovifyR}
-\alias{markovifyR-package}
 \title{Markovify wrapper for R}
 \description{
 Markovify wrapper for R

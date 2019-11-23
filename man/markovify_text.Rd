@@ -4,9 +4,16 @@
 \alias{markovify_text}
 \title{Markovify text}
 \usage{
-markovify_text(markov_model, maximum_sentence_length = NULL,
-  start_words = NULL, output_column_name = "columnName", count = 50,
-  tries = 100, only_distinct = TRUE, return_message = TRUE)
+markovify_text(
+  markov_model,
+  maximum_sentence_length = NULL,
+  start_words = NULL,
+  output_column_name = "columnName",
+  count = 50,
+  tries = 100,
+  only_distinct = TRUE,
+  return_message = TRUE
+)
 }
 \arguments{
 \item{markov_model}{a markov model produced from \code{generate_markovify_model}}

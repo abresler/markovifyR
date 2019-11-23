@@ -4,8 +4,13 @@
 \alias{generate_markovify_model}
 \title{Generate Markovify model}
 \usage{
-generate_markovify_model(input_text, markov_state_size = 2,
-  max_overlap_total = 15, max_overlap_ratio = 0.7, tries = 100)
+generate_markovify_model(
+  input_text,
+  markov_state_size = 2,
+  max_overlap_total = 15,
+  max_overlap_ratio = 0.7,
+  tries = 100
+)
 }
 \arguments{
 \item{input_text}{a \code{vector} of text}
