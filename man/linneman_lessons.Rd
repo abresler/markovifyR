@@ -4,12 +4,14 @@
 \name{linneman_lessons}
 \alias{linneman_lessons}
 \title{Peter Linneman's life lessons}
-\format{Data frame with columns
+\format{
+Data frame with columns
 \describe{
 \item{idLesson}{Lesson Number}
 \item{textLesson}{Lesson Text}
   ...
-}}
+}
+}
 \source{
 \url{https://asbcllc.com/reflections/peter_linneman/}
 }

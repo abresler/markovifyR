@@ -4,9 +4,6 @@
 \name{markovifyR}
 \alias{markovifyR}
 \title{Markovify wrapper for R}
-\description{
-Markovify wrapper for R
-}
 \author{
 Alex Bresler (abresler@asbcllc.com)
 }
