@@ -169,7 +169,7 @@ generate_sentence <-
         walk(function(x) {
           text_output <-
             df_text %>% slice(x) %>% select(2) %>% pull(UQ(output_column_name))
-          glue::glue("{output_column_name}: {text_output}") %>% cat(fill = T)
+          glue::glue("{crayon::blue(output_column_name)}: {crayon::white(text_output)}") %>% cat(fill = T)
         })
 
     }
