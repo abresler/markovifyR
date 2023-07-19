@@ -12,9 +12,6 @@ generate_corpus(markov_model, input_text)
 
 \item{input_text}{vector of input text}
 }
-\value{
-
-}
 \description{
 Generate a corpus from a
 markov model

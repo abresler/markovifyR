@@ -14,9 +14,6 @@ combine_markov_models(model_a, model_b, weights = c(1, 1.5))
 \item{weights}{numeric vector of 2 weights
 defaults are \code{c(1, 1.5)}}
 }
-\value{
-
-}
 \description{
 Builds a combined
 markov model
