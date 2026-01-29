@@ -2,17 +2,35 @@
 % Please edit documentation in R/markovify.R
 \name{generate_parsed_sentences}
 \alias{generate_parsed_sentences}
-\title{Generate parsed sentences}
+\title{Generate Parsed Sentences}
 \usage{
 generate_parsed_sentences(markov_model)
 }
 \arguments{
-\item{markov_model}{}
+\item{markov_model}{A markov model object created by \code{generate_markovify_model}.}
 }
 \value{
-a \code{list}
+A \code{list} containing the parsed sentences from the model's
+internal representation.
 }
 \description{
-This function returns the parsed input
-text in sentence form
+Returns the parsed input text in sentence form from a markov model.
+Useful for inspecting how the model has tokenized and processed
+the original input text.
+}
+\examples{
+\dontrun{
+library(markovifyR)
+data("linneman_lessons")
+
+# Create a markov model
+lessons <- linneman_lessons$textLesson
+markov_model <- generate_markovify_model(input_text = lessons)
+
+# Get parsed sentences
+parsed <- generate_parsed_sentences(markov_model)
+
+# View the first few parsed sentences
+head(parsed)
+}
 }

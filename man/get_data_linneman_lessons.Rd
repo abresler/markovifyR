@@ -2,19 +2,29 @@
 % Please edit documentation in R/linneman.R
 \name{get_data_linneman_lessons}
 \alias{get_data_linneman_lessons}
-\title{Newest Linneman lessons}
+\title{Newest Linneman Lessons}
 \usage{
 get_data_linneman_lessons()
 }
 \value{
-a \code{tibble}
+A \code{tibble} with columns:
+\itemize{
+  \item \code{idLesson}: Integer lesson identifier
+  \item \code{textLesson}: Character string containing the lesson text
+}
 }
 \description{
-Newest Linneman lessons
+Fetches the newest Peter Linneman life lessons from the web.
 }
 \examples{
-get_data_linneman_lessons()
+\dontrun{
+# Fetch lessons from web
+lessons <- get_data_linneman_lessons()
+
+# Use in markov model
+markov_model <- generate_markovify_model(input_text = lessons$textLesson)
+}
 }
 \references{
-\url{asbcllc.com/reflections/peter_linneman/}
+\url{https://asbcllc.com/reflections/peter_linneman/}
 }

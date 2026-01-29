@@ -7,16 +7,37 @@
 export_markov_model(markov_model, format = "json")
 }
 \arguments{
-\item{markov_model}{a markov model object}
+\item{markov_model}{A markov model object created by \code{generate_markovify_model}.}
 
-\item{format}{\itemize{
-\item json - returns a json object
-\item dict - returns dictionary object
+\item{format}{Character string specifying the export format:
+\itemize{
+  \item \code{"json"} (default) - returns a JSON string representation
+  \item \code{"dict"} - returns a Python dictionary object
 }}
 }
 \value{
-a json or dictionary object
+A JSON string or Python dictionary object representing the model.
 }
 \description{
-Export Markov Model
+Exports a markov model to a portable format (JSON or dictionary)
+for storage or transfer.
+}
+\examples{
+\dontrun{
+library(markovifyR)
+data("linneman_lessons")
+
+# Create a markov model
+lessons <- linneman_lessons$textLesson
+markov_model <- generate_markovify_model(input_text = lessons)
+
+# Export as JSON (default)
+json_model <- export_markov_model(markov_model)
+
+# Export as dictionary
+dict_model <- export_markov_model(markov_model, format = "dict")
+
+# Save JSON to file
+writeLines(json_model, "my_markov_model.json")
+}
 }

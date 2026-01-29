@@ -179,19 +179,37 @@ generate_sentence <-
 
 
 
-#' Combine markov models
+#' Combine Markov Models
 #'
-#' Builds a combined
-#' markov model
+#' Builds a combined markov model from two separate models,
+#' allowing text generation that blends characteristics from both sources.
 #'
-#' @param model_a first model
-#' @param model_b second model
-#' @param weights numeric vector of 2 weights
-#' defaults are \code{c(1, 1.5)}
+#' @param model_a A markov model object created by \code{generate_markovify_model}.
+#' @param model_b A markov model object created by \code{generate_markovify_model}.
+#' @param weights Numeric vector of length 2 specifying the relative weights
+#' for each model. Default is \code{c(1, 1.5)}.
 #'
-#' @return
+#' @return A combined markov model Python object that can be used with
+#' \code{markovify_text} and other text generation functions.
 #' @export
+#'
 #' @examples
+#' \dontrun{
+#' library(markovifyR)
+#'
+#' # Create two separate models from different text sources
+#' model_a <- generate_markovify_model(input_text = text_source_1)
+#' model_b <- generate_markovify_model(input_text = text_source_2)
+#'
+#' # Combine models with equal weighting
+#' combined_model <- combine_markov_models(model_a, model_b, weights = c(1, 1))
+#'
+#' # Combine models with model_b weighted more heavily
+#' combined_model <- combine_markov_models(model_a, model_b, weights = c(1, 2))
+#'
+#' # Generate text from the combined model
+#' markovify_text(combined_model, count = 10)
+#' }
 combine_markov_models <-
   function(model_a, model_b, weights = c(1, 1.5)) {
     mk <- reticulate::import("markovify")
@@ -201,32 +219,63 @@ combine_markov_models <-
     model
   }
 
-#' Generate a corpus from a
-#' markov model
+#' Generate Corpus from Markov Model
 #'
-#' @param markov_model markov model object
-#' @param input_text vector of input text
+#' Generates a corpus structure from a markov model and input text.
+#' The corpus represents the processed text data used internally
+#' by the markov chain.
 #'
-#' @return
+#' @param markov_model A markov model object created by \code{generate_markovify_model}.
+#' @param input_text Character vector of input text to process into the corpus.
+#'
+#' @return A Python corpus object containing the processed text structure.
 #' @export
+#'
 #' @examples
+#' \dontrun{
+#' library(markovifyR)
+#' data("linneman_lessons")
+#'
+#' # Create a markov model
+#' lessons <- linneman_lessons$textLesson
+#' markov_model <- generate_markovify_model(input_text = lessons)
+#'
+#' # Generate corpus from the model
+#' corpus <- generate_corpus(markov_model, input_text = lessons)
+#' }
 generate_corpus <-
   function(markov_model, input_text) {
    corpus <- markov_model$generate_corpus(text = input_text)
    corpus
   }
 
-#' Generate parsed sentences
+#' Generate Parsed Sentences
 #'
-#' This function returns the parsed input
-#' text in sentence form
+#' Returns the parsed input text in sentence form from a markov model.
+#' Useful for inspecting how the model has tokenized and processed
+#' the original input text.
 #'
-#' @param markov_model
+#' @param markov_model A markov model object created by \code{generate_markovify_model}.
 #'
-#' @return a \code{list}
+#' @return A \code{list} containing the parsed sentences from the model's
+#' internal representation.
 #' @export
 #'
 #' @examples
+#' \dontrun{
+#' library(markovifyR)
+#' data("linneman_lessons")
+#'
+#' # Create a markov model
+#' lessons <- linneman_lessons$textLesson
+#' markov_model <- generate_markovify_model(input_text = lessons)
+#'
+#' # Get parsed sentences
+#' parsed <- generate_parsed_sentences(markov_model)
+#'
+#' # View the first few parsed sentences
+#' head(parsed)
+#' }
 generate_parsed_sentences <-
   function(markov_model) {
     markov_model$parsed_sentences
@@ -315,15 +364,43 @@ generate_sentences_starting_with_words <-
     all_data
   }
 
-#' Generate start words
+#' Generate Start Words
 #'
-#' @param markov_model markov model mobject
-#' @param include_cumulative_distance if \code{TRUE} returns
-#' cumulative distance of the words
+#' Retrieves the available starting words from a markov model's chain.
+#' These are words that can be used with \code{markovify_text} when
+#' specifying \code{start_words} to begin generated sentences.
 #'
-#' @return a \code{tibble} objects
+#' @param markov_model A markov model object created by \code{generate_markovify_model}.
+#' @param include_cumulative_distance Logical. If \code{TRUE} (default), returns
+#' cumulative distance values for each starting word.
+#'
+#' @return A \code{tibble} with columns:
+#' \itemize{
+#'   \item \code{idSentence}: Integer row identifier
+#'   \item \code{wordStart}: Character string of the starting word
+#'   \item \code{distanceCumulative}: Numeric cumulative distance (if requested)
+#' }
 #' @export
+#'
 #' @examples
+#' \dontrun{
+#' library(markovifyR)
+#' data("linneman_lessons")
+#'
+#' # Create a markov model
+#' lessons <- linneman_lessons$textLesson
+#' markov_model <- generate_markovify_model(input_text = lessons)
+#'
+#' # Get available start words
+#' start_words <- generate_start_words(markov_model)
+#'
+#' # Get start words without cumulative distance
+#' start_words <- generate_start_words(markov_model, include_cumulative_distance = FALSE)
+#'
+#' # Use start words in text generation
+#' selected_words <- head(start_words$wordStart, 5)
+#' markovify_text(markov_model, start_words = selected_words, count = 10)
+#' }
 generate_start_words <-
   function(markov_model, include_cumulative_distance = TRUE) {
     start <- markov_model$chain$begin_choices
@@ -436,15 +513,38 @@ markovify_text <-
 
 #' Export Markov Model
 #'
-#' @param markov_model a markov model object
-#' @param format \itemize{
-#' \item json - returns a json object
-#' \item dict - returns dictionary object
+#' Exports a markov model to a portable format (JSON or dictionary)
+#' for storage or transfer.
+#'
+#' @param markov_model A markov model object created by \code{generate_markovify_model}.
+#' @param format Character string specifying the export format:
+#' \itemize{
+#'   \item \code{"json"} (default) - returns a JSON string representation
+#'   \item \code{"dict"} - returns a Python dictionary object
 #' }
-#' @return a json or dictionary object
+#'
+#' @return A JSON string or Python dictionary object representing the model.
 #' @export
 #' @import purrr reticulate stringr tibble dplyr
+#'
 #' @examples
+#' \dontrun{
+#' library(markovifyR)
+#' data("linneman_lessons")
+#'
+#' # Create a markov model
+#' lessons <- linneman_lessons$textLesson
+#' markov_model <- generate_markovify_model(input_text = lessons)
+#'
+#' # Export as JSON (default)
+#' json_model <- export_markov_model(markov_model)
+#'
+#' # Export as dictionary
+#' dict_model <- export_markov_model(markov_model, format = "dict")
+#'
+#' # Save JSON to file
+#' writeLines(json_model, "my_markov_model.json")
+#' }
 export_markov_model <-
   function(markov_model, format = "json"){
     if (!format %>% stringr::str_to_lower() == "json"){

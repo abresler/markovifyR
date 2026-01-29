@@ -2,8 +2,20 @@
 % Please edit documentation in R/markovifyR-package.R
 \docType{package}
 \name{markovifyR}
+\alias{markovifyR-package}
 \alias{markovifyR}
 \title{Markovify wrapper for R}
+\description{
+R wrapper for the 'Markovify' (\url{https://github.com/jsvine/markovify}) library. This package allows for easy and text generation using hidden markov models.
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/abresler/markovifyR}
+  \item Report bugs at \url{https://github.com/abresler/markovifyR/issues}
+}
+
+}
 \author{
 Alex Bresler (abresler@asbcllc.com)
 }

@@ -2,17 +2,33 @@
 % Please edit documentation in R/markovify.R
 \name{generate_corpus}
 \alias{generate_corpus}
-\title{Generate a corpus from a
-markov model}
+\title{Generate Corpus from Markov Model}
 \usage{
 generate_corpus(markov_model, input_text)
 }
 \arguments{
-\item{markov_model}{markov model object}
+\item{markov_model}{A markov model object created by \code{generate_markovify_model}.}
 
-\item{input_text}{vector of input text}
+\item{input_text}{Character vector of input text to process into the corpus.}
+}
+\value{
+A Python corpus object containing the processed text structure.
 }
 \description{
-Generate a corpus from a
-markov model
+Generates a corpus structure from a markov model and input text.
+The corpus represents the processed text data used internally
+by the markov chain.
+}
+\examples{
+\dontrun{
+library(markovifyR)
+data("linneman_lessons")
+
+# Create a markov model
+lessons <- linneman_lessons$textLesson
+markov_model <- generate_markovify_model(input_text = lessons)
+
+# Generate corpus from the model
+corpus <- generate_corpus(markov_model, input_text = lessons)
+}
 }

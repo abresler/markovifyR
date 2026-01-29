@@ -2,19 +2,46 @@
 % Please edit documentation in R/markovify.R
 \name{generate_start_words}
 \alias{generate_start_words}
-\title{Generate start words}
+\title{Generate Start Words}
 \usage{
 generate_start_words(markov_model, include_cumulative_distance = TRUE)
 }
 \arguments{
-\item{markov_model}{markov model mobject}
+\item{markov_model}{A markov model object created by \code{generate_markovify_model}.}
 
-\item{include_cumulative_distance}{if \code{TRUE} returns
-cumulative distance of the words}
+\item{include_cumulative_distance}{Logical. If \code{TRUE} (default), returns
+cumulative distance values for each starting word.}
 }
 \value{
-a \code{tibble} objects
+A \code{tibble} with columns:
+\itemize{
+  \item \code{idSentence}: Integer row identifier
+  \item \code{wordStart}: Character string of the starting word
+  \item \code{distanceCumulative}: Numeric cumulative distance (if requested)
+}
 }
 \description{
-Generate start words
+Retrieves the available starting words from a markov model's chain.
+These are words that can be used with \code{markovify_text} when
+specifying \code{start_words} to begin generated sentences.
+}
+\examples{
+\dontrun{
+library(markovifyR)
+data("linneman_lessons")
+
+# Create a markov model
+lessons <- linneman_lessons$textLesson
+markov_model <- generate_markovify_model(input_text = lessons)
+
+# Get available start words
+start_words <- generate_start_words(markov_model)
+
+# Get start words without cumulative distance
+start_words <- generate_start_words(markov_model, include_cumulative_distance = FALSE)
+
+# Use start words in text generation
+selected_words <- head(start_words$wordStart, 5)
+markovify_text(markov_model, start_words = selected_words, count = 10)
+}
 }

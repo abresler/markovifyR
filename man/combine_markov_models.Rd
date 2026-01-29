@@ -2,19 +2,41 @@
 % Please edit documentation in R/markovify.R
 \name{combine_markov_models}
 \alias{combine_markov_models}
-\title{Combine markov models}
+\title{Combine Markov Models}
 \usage{
 combine_markov_models(model_a, model_b, weights = c(1, 1.5))
 }
 \arguments{
-\item{model_a}{first model}
+\item{model_a}{A markov model object created by \code{generate_markovify_model}.}
 
-\item{model_b}{second model}
+\item{model_b}{A markov model object created by \code{generate_markovify_model}.}
 
-\item{weights}{numeric vector of 2 weights
-defaults are \code{c(1, 1.5)}}
+\item{weights}{Numeric vector of length 2 specifying the relative weights
+for each model. Default is \code{c(1, 1.5)}.}
+}
+\value{
+A combined markov model Python object that can be used with
+\code{markovify_text} and other text generation functions.
 }
 \description{
-Builds a combined
-markov model
+Builds a combined markov model from two separate models,
+allowing text generation that blends characteristics from both sources.
+}
+\examples{
+\dontrun{
+library(markovifyR)
+
+# Create two separate models from different text sources
+model_a <- generate_markovify_model(input_text = text_source_1)
+model_b <- generate_markovify_model(input_text = text_source_2)
+
+# Combine models with equal weighting
+combined_model <- combine_markov_models(model_a, model_b, weights = c(1, 1))
+
+# Combine models with model_b weighted more heavily
+combined_model <- combine_markov_models(model_a, model_b, weights = c(1, 2))
+
+# Generate text from the combined model
+markovify_text(combined_model, count = 10)
+}
 }
