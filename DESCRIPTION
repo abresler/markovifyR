@@ -1,8 +1,8 @@
 Package: markovifyR
 Type: Package
 Title: R wrapper for the Markovify Python module
-Version: 0.102
-Date: 2017-09-18
+Version: 0.103
+Date: 2026-01-29
 Author: Alex Bresler (abresler@@asbcllc.com)
 Maintainer: Alex Bresler <abresler@asbcllc.com>
 Description: R wrapper for the 'Markovify' (<https://github.com/jsvine/markovify>) library. This package allows for easy and text generation using hidden markov models.

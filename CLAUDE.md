@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Package Overview
 
-**markovifyR** (v0.102) - R wrapper for the Python [Markovify](https://github.com/jsvine/markovify) library for Markov chain text generation.
+**markovifyR** (v0.103) - R wrapper for the Python [Markovify](https://github.com/jsvine/markovify) library for Markov chain text generation.
 
 ## Prerequisites
 
